@@ -1,3 +1,5 @@
+https://github.com/user-attachments/assets/10d3193c-9314-4ae5-8f03-6cd9f2a73eb3
+
 ## Gemini AI Agent Chatbot
 A desktop chatbot powered by Google's Gemini 2.5 model. This application demonstrates the power of a tool-using AI agent by performing real-time web searches and fetching current weather data to answer user queries.
 
