@@ -1,8 +1,6 @@
 ## Gemini AI Agent Chatbot
 A desktop chatbot powered by Google's Gemini 2.5 model. This application demonstrates the power of a tool-using AI agent by performing real-time web searches and fetching current weather data to answer user queries.
 
----
-
 ## Key Features
 - **Conversational AI**: Utilizes Google's powerful `gemini-2.5-flash` model for natural and intelligent conversation.
 - **AI Agent with Tool Use**: The chatbot autonomously decides when to use tools to answer questions beyond its base knowledge.
@@ -10,8 +8,6 @@ A desktop chatbot powered by Google's Gemini 2.5 model. This application demonst
 - **Live Weather Data**: Fetches current weather conditions for any location using the WeatherAPI.
 - **Graphical User Interface**: Built with Python's standard Tkinter library for a simple and intuitive user experience.
 - **Retrieval-Augmented Generation (RAG)**: Implements the RAG pattern by retrieving external data (from web search or weather APIs) to augment the AI's generation process, leading to more accurate and timely responses.
-
----
 
 ## Architecture
 This application operates in a simple but powerful loop that demonstrates a modern AI agentic workflow:
@@ -22,8 +18,6 @@ This application operates in a simple but powerful loop that demonstrates a mode
 5. **Data Retrieval**: The Python code executes the requested function, calling the external Google Search or WeatherAPI.
 6. **Response Generation**: The data retrieved from the API is sent back to the Gemini model, which then generates a final, human-readable response based on this new information.
 7. **Display**: The final response is displayed in the Tkinter chat window.
-
----
 
 ## Getting Started
 Follow these instructions to get the project running on your local machine.
@@ -64,23 +58,17 @@ SEARCH_ENGINE_ID = "PASTE_YOUR_SEARCH_ENGINE_ID_HERE"
 - `WEATHER_API_KEY`: Get this from the [WeatherAPI](https://www.weatherapi.com/) dashboard after signing up for a free account.
 - `GOOGLE_API_KEY` and `SEARCH_ENGINE_ID`: These are required for the web search tool. Follow the instructions in the [Google Cloud documentation for the Programmable Search Engine](https://developers.google.com/custom-search/v1/overview?authuser=1) to get both.
 
----
-
 ## How to Run
 Once the dependencies are installed and the API keys are configured, run the application from your terminal:
 ```
 python your_script_name.py
 ```
 
----
-
 ## Core Concepts Demonstrated
 This project is an excellent educational tool for understanding key concepts in modern AI development:
 - **AI Agents**: It showcases a basic but complete agent that can perceive its environment (user queries) and act upon it using tools.
 - **Function Calling**: The core mechanism that allows the LLM to request that your code run specific functions to interact with the outside world.
 - **RAG**: By using web search, this project implements a real-time RAG system that is not limited to a static set of documents, ensuring its knowledge is always current.
-
----
 
 ## Author
 Khaled Saleh
