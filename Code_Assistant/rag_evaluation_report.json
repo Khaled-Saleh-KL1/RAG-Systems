@@ -1,0 +1,204 @@
+{
+  "evaluation_timestamp": "2025-08-01T21:07:06.698731",
+  "dataset_info": {
+    "total_examples": 10,
+    "dataset_file": "mbpp.jsonl"
+  },
+  "overall_metrics": {
+    "overall_pass_rate": 0.0,
+    "perfect_solutions": 0,
+    "failed_solutions": 10,
+    "partial_solutions": 0
+  },
+  "retrieval_metrics": {
+    "avg_retrieval_score": 0.3078873182336489,
+    "min_retrieval_score": 0.07668238878250122,
+    "max_retrieval_score": 0.4728644788265228
+  },
+  "error_analysis": {
+    "execution_errors": 10,
+    "generation_errors": 0
+  },
+  "detailed_results": [
+    {
+      "task_id": 1,
+      "query": "Write a function to find the minimum cost path to reach (m, n) from (0, 0) for the given cost matrix...",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.27717265486717224,
+        0.2715941369533539,
+        0.24310922622680664
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmp6tfm1p8s.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmp6tfm1p8s.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 6967
+    },
+    {
+      "task_id": 2,
+      "query": "Write a function to find the similar elements from the given two tuple lists.",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.43957871198654175,
+        0.3539755046367645,
+        0.28721994161605835
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmp7kgd7e9u.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmp7kgd7e9u.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 8167
+    },
+    {
+      "task_id": 3,
+      "query": "Write a python function to identify non-prime numbers.",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.40712472796440125,
+        0.3676384389400482,
+        0.3045129179954529
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmp30qi9_zu.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmp30qi9_zu.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 4390
+    },
+    {
+      "task_id": 4,
+      "query": "Write a function to find the largest integers from a given list of numbers using heap queue algorith...",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.4728644788265228,
+        0.28045654296875,
+        0.2534162700176239
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmpsha8sw7g.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmpsha8sw7g.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 6338
+    },
+    {
+      "task_id": 5,
+      "query": "Write a function to find the number of ways to fill it with 2 x 1 dominoes for the given 3 x n board...",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.2663925290107727,
+        0.2361154705286026,
+        0.20307353138923645
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmpcelbujta.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmpcelbujta.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 12929
+    },
+    {
+      "task_id": 6,
+      "query": "Write a python function to check whether the two numbers differ at one bit position only or not.",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.34362661838531494,
+        0.3368465304374695,
+        0.28475072979927063
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmpjcez2yfi.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmpjcez2yfi.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 7430
+    },
+    {
+      "task_id": 7,
+      "query": "Write a function to find all words which are at least 4 characters long in a string by using regex.",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.37592628598213196,
+        0.1806727647781372,
+        0.07668238878250122
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmpxh09cmit.py\", line 1\n    \\nThe provided Python code snippet defines a function `find_long_words` that uses regular expressions to extract words with a minimum length of four characters from a given string.\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmpxh09cmit.py\", line 1\n    \\nThe provided Python code snippet defines a function `find_long_words` that uses regular expressions to extract words with a minimum length of four characters from a given string.\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 6993
+    },
+    {
+      "task_id": 8,
+      "query": "Write a function to find squares of individual elements in a list using lambda function.",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.39901429414749146,
+        0.2634066939353943,
+        0.2515207827091217
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmpe_0dmcy0.py\", line 1\n    \\nThis Python function, `square_elements(nums)`, is designed to take a list or any iterable of numbers and return a new list where each element is the square of the corresponding element in the input.\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmpe_0dmcy0.py\", line 1\n    \\nThis Python function, `square_elements(nums)`, is designed to take a list or any iterable of numbers and return a new list where each element is the square of the corresponding element in the input.\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 8047
+    },
+    {
+      "task_id": 9,
+      "query": "Write a python function to find the minimum number of rotations required to get the same string.",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.378577321767807,
+        0.3527430295944214,
+        0.3159298300743103
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmpum7c0pbo.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmpum7c0pbo.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 6953
+    },
+    {
+      "task_id": 10,
+      "query": "Write a function to get the n smallest items from a dataset.",
+      "pass_rate": 0.0,
+      "retrieval_scores": [
+        0.34091058373451233,
+        0.33715248107910156,
+        0.3346141278743744
+      ],
+      "test_results": {
+        "test_1": false,
+        "test_2": false,
+        "test_3": false,
+        "execution_error": "  File \"/tmp/tmp0s_2grxl.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n"
+      },
+      "execution_error": "  File \"/tmp/tmp0s_2grxl.py\", line 1\n    \\n```python\n     ^\nSyntaxError: unexpected character after line continuation character\n",
+      "generated_code_length": 6421
+    }
+  ]
+}

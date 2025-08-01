@@ -1,0 +1,174 @@
+llama_context: n_ctx_per_seq (2096) < n_ctx_train (4096) -- the full capacity of the model will not be utilized
+llama_kv_cache_unified: LLAMA_SET_ROWS=0, using old ggml_cpy() method for backwards compatibility
+🚀 RAG Evaluation on MBPP Examples
+Goal: Evaluate retrieval + LLM effectiveness on real-world Python problems
+
+📁 Loading MBPP data from mbpp.jsonl...
+✅ Loaded 10 MBPP examples
+🔧 Initializing embedding model...
+✅ Embedding model loaded
+🚀 Initializing AI workflow...
+✅ Workflow initialized
+\n🚀 Starting RAG Evaluation on MBPP Examples
+============================================================
+🧮 Creating embeddings for MBPP examples...
+✅ Created embeddings for 10 examples
+\n[1/10] Processing Task 1
+\n🧪 Evaluating Task 1: Write a function to find the minimum cost path to reach (m, ...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.277', '0.272', '0.243']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 6967 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[2/10] Processing Task 2
+\n🧪 Evaluating Task 2: Write a function to find the similar elements from the given...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.440', '0.354', '0.287']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 8167 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[3/10] Processing Task 3
+\n🧪 Evaluating Task 3: Write a python function to identify non-prime numbers....
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.407', '0.368', '0.305']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 4390 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[4/10] Processing Task 4
+\n🧪 Evaluating Task 4: Write a function to find the largest integers from a given l...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.473', '0.280', '0.253']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 6338 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[5/10] Processing Task 5
+\n🧪 Evaluating Task 5: Write a function to find the number of ways to fill it with ...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.266', '0.236', '0.203']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 12929 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[6/10] Processing Task 6
+\n🧪 Evaluating Task 6: Write a python function to check whether the two numbers dif...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.344', '0.337', '0.285']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 7430 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[7/10] Processing Task 7
+\n🧪 Evaluating Task 7: Write a function to find all words which are at least 4 char...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.376', '0.181', '0.077']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 6993 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[8/10] Processing Task 8
+\n🧪 Evaluating Task 8: Write a function to find squares of individual elements in a...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.399', '0.263', '0.252']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 8047 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[9/10] Processing Task 9
+\n🧪 Evaluating Task 9: Write a python function to find the minimum number of rotati...
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.379', '0.353', '0.316']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 6953 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n[10/10] Processing Task 10
+\n🧪 Evaluating Task 10: Write a function to get the n smallest items from a dataset....
+📊 Retrieved 3 similar examples
+🎯 Retrieval scores: ['0.341', '0.337', '0.335']
+🚦 Route Node: Analyzing user intent...
+🧠 Classifying intent for: 'You are a Python programming expert. Use the follo...'
+✅ Intent: code_generation (confidence: 0.8)
+🎯 Routing decision: code_generation
+🔀 Deciding next step for intent: code_generation (confidence: 0.8)
+→ Routing to code generation pipeline
+🔄 Processing with Phi3 for code_generation task...
+🔄 Processing with Gemini for code_generation task...
+🤖 Generated code: 6421 characters
+✅ Test Results: 0/3 passed (0.0%)
+\n📊 Generating Evaluation Report...
+\n============================================================
+🎯 RAG EVALUATION SUMMARY
+============================================================
+📊 Dataset: 10 examples
+✅ Overall Pass Rate: 0.0%
+🎯 Perfect Solutions: 0
+⚠️  Failed Solutions: 10
+🔄 Partial Solutions: 0
+
+🔍 Retrieval Quality:
+   • Average Score: 0.308
+   • Min Score: 0.077
+   • Max Score: 0.473
+
+❌ Execution Errors: 10
+\n============================================================
+💾 Report saved to rag_evaluation_report.json
+\n✅ Evaluation completed successfully!
