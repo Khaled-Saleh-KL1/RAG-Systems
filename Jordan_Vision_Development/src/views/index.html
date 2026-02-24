@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,15 @@
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --bg-primary: #0f172a;
@@ -35,8 +42,20 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             height: 100vh;
+            overflow: hidden;
+        }
+
+        #root {
+            height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+        }
+
+        .app-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             overflow: hidden;
         }
 
@@ -101,9 +120,18 @@
             gap: 16px;
         }
 
-        .chat-container::-webkit-scrollbar { width: 6px; }
-        .chat-container::-webkit-scrollbar-track { background: transparent; }
-        .chat-container::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        .chat-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
 
         .message {
             max-width: 75%;
@@ -116,8 +144,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .message.user {
@@ -206,8 +241,14 @@
             transition: all 0.2s;
         }
 
-        .teach-submit:hover { opacity: 0.9; }
-        .teach-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+        .teach-submit:hover {
+            opacity: 0.9;
+        }
+
+        .teach-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
         .teach-skip {
             padding: 8px 16px;
@@ -221,7 +262,9 @@
             transition: all 0.2s;
         }
 
-        .teach-skip:hover { border-color: var(--text-secondary); }
+        .teach-skip:hover {
+            border-color: var(--text-secondary);
+        }
 
         .input-area {
             background: var(--bg-secondary);
@@ -251,7 +294,9 @@
             box-shadow: 0 0 0 3px var(--accent-glow);
         }
 
-        .input-area input::placeholder { color: var(--text-secondary); }
+        .input-area input::placeholder {
+            color: var(--text-secondary);
+        }
 
         .send-btn {
             padding: 14px 28px;
@@ -271,7 +316,10 @@
             box-shadow: 0 0 20px var(--accent-glow);
         }
 
-        .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
 
         .status-toast {
             position: fixed;
@@ -287,13 +335,34 @@
         }
 
         @keyframes slideDown {
-            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
-        .status-toast.success { background: rgba(34, 197, 94, 0.15); border: 1px solid var(--success); color: var(--success); }
-        .status-toast.error { background: rgba(239, 68, 68, 0.15); border: 1px solid var(--error); color: var(--error); }
-        .status-toast.info { background: rgba(99, 102, 241, 0.15); border: 1px solid var(--accent); color: var(--accent-hover); }
+        .status-toast.success {
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid var(--success);
+            color: var(--success);
+        }
+
+        .status-toast.error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid var(--error);
+            color: var(--error);
+        }
+
+        .status-toast.info {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent-hover);
+        }
 
         .empty-state {
             flex: 1;
@@ -305,8 +374,14 @@
             gap: 12px;
         }
 
-        .empty-state .icon { font-size: 48px; opacity: 0.5; }
-        .empty-state p { font-size: 15px; }
+        .empty-state .icon {
+            font-size: 48px;
+            opacity: 0.5;
+        }
+
+        .empty-state p {
+            font-size: 15px;
+        }
 
         .typing-indicator {
             display: flex;
@@ -323,17 +398,33 @@
             animation: bounce 1.4s infinite;
         }
 
-        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes bounce {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-8px); }
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
         }
 
-        .hidden-input { display: none; }
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+
+            30% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .hidden-input {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <div id="root"></div>
 
@@ -459,7 +550,7 @@
             };
 
             return (
-                <>
+                <div className="app-wrapper">
                     {toast && (
                         <div className={`status-toast ${toast.type}`}>
                             {toast.message}
@@ -495,7 +586,7 @@
                             <div className="empty-state">
                                 <div className="icon">💬</div>
                                 <p>ابدأ بطرح سؤال حول البيانات المخزنة</p>
-                                <p style={{fontSize: '13px'}}>أو ارفع ملف PDF جديد للبدء</p>
+                                <p style={{ fontSize: '13px' }}>أو ارفع ملف PDF جديد للبدء</p>
                             </div>
                         )}
 
@@ -561,11 +652,12 @@
                             إرسال
                         </button>
                     </div>
-                </>
+                </div>
             );
         }
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
+
 </html>
