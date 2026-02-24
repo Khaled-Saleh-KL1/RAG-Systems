@@ -7,7 +7,7 @@ import os
 # Files Imports
 from helpers import get_settings
 from routes import base_router, data_router, qa_router
-from stores import ChromaDBStore
+from stores import ChromaDBStore, ChatHistoryStore
 
 app = FastAPI()
 
@@ -22,11 +22,19 @@ async def lifespan(app: FastAPI):
     app.state.chroma_store = chroma_store
     print("[Lifespan] ChromaDB connected.")
 
+    # Chat History Database Connection
+    chat_history_store = ChatHistoryStore()
+    chat_history_store.connect()
+    app.state.chat_history_store = chat_history_store
+    print("[Lifespan] ChatHistory connected.")
+
     yield
 
     # --- Close ---
     chroma_store.disconnect()
     print("[Lifespan] ChromaDB disconnected.")
+    chat_history_store.disconnect()
+    print("[Lifespan] ChatHistory disconnected.")
 
 app = FastAPI(lifespan=lifespan)
 

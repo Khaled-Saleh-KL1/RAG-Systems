@@ -31,15 +31,36 @@ class GeminiLLM(LLMInterface):
         print(f"[Gemini] Received {len(cleaned)} cleaned chars.")
         return cleaned
 
-    def answer_question(self, question: str, context: str) -> str:
+    def answer_question(self, question: str, context: str, history: list[dict] = None, sources: list[str] = None) -> str:
+        # Build conversation history section
+        history_section = ""
+        if history:
+            history_lines = []
+            for msg in history:
+                role_label = "User" if msg["role"] == "user" else "Assistant"
+                history_lines.append(f"{role_label}: {msg['content']}")
+            history_section = (
+                "--- CONVERSATION HISTORY ---\n"
+                + "\n".join(history_lines)
+                + "\n--- END CONVERSATION HISTORY ---\n\n"
+            )
+
+        # Build sources section
+        sources_section = ""
+        if sources:
+            unique_sources = list(dict.fromkeys(sources))  # deduplicate, keep order
+            sources_section = "Available sources: " + ", ".join(unique_sources) + "\n"
+
         prompt = (
-            "You are a helpful assistant that answers questions ONLY based on the provided context. "
-            "If the answer is not found in the context, say 'لا أستطيع العثور على إجابة في البيانات المتاحة' "
-            "(I cannot find an answer in the available data). "
-            "NEVER use external knowledge. Answer in the same language as the question.\n\n"
+            "You are a helpful assistant that answers questions based on the provided context. "
+            "Answer in the same language as the question. "
+            "You may also reference the conversation history if the user asks about previous questions or answers.\n"
+            "At the end of your answer, list the source documents you used under a '📚 المراجع:' heading.\n\n"
             "--- CONTEXT START ---\n"
             f"{context}\n"
             "--- CONTEXT END ---\n\n"
+            f"{sources_section}"
+            f"{history_section}"
             f"Question: {question}\n"
             "Answer:"
         )

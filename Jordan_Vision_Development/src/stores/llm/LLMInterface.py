@@ -7,5 +7,5 @@ class LLMInterface(ABC):
         pass
 
     @abstractmethod
-    def answer_question(self, question: str, context: str) -> str:
+    def answer_question(self, question: str, context: str, history: list[dict] = None, sources: list[str] = None) -> str:
         pass

@@ -28,17 +28,24 @@ class ChromaDBStore:
         )
         print(f"[ChromaDB] Stored document: {doc_id} ({len(text)} chars)")
 
-    def search(self, query: str, n_results: int = 5) -> list[str]:
+    def search(self, query: str, n_results: int = 5) -> dict:
         if self.collection is None:
             raise RuntimeError("ChromaDB not connected. Call connect() first.")
 
         results = self.collection.query(
             query_texts=[query],
-            n_results=n_results
+            n_results=n_results,
+            include=["documents", "metadatas", "distances"]
         )
         documents = results.get("documents", [[]])[0]
-        print(f"[ChromaDB] Search returned {len(documents)} result(s)")
-        return documents
+        metadatas = results.get("metadatas", [[]])[0]
+        distances = results.get("distances", [[]])[0]
+        print(f"[ChromaDB] Search returned {len(documents)} result(s), distances: {distances}")
+        return {
+            "documents": documents,
+            "metadatas": metadatas,
+            "distances": distances
+        }
 
     def disconnect(self):
         self.client = None
