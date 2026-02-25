@@ -9,7 +9,6 @@ services:
       - ../src/stores/ChromaDB:/app/stores/ChromaDB
       - ../src/stores/ChatHistory:/app/stores/ChatHistory
       - ../src/output:/app/output
-    environment:
-      - GEMINI_API=${GEMINI_API}
-      - GEMINI_MODEL=${GEMINI_MODEL}
+    env_file:
+      - ../src/.env
     restart: unless-stopped
