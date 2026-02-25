@@ -1,7 +1,9 @@
 # Libraries Imports
 from fastapi import APIRouter, Depends, UploadFile, File,\
 BackgroundTasks, Form, Request
+from fastapi.responses import JSONResponse
 from typing import List
+import os
 
 # Files Imports
 from helpers import Settings, get_settings
@@ -21,6 +23,25 @@ async def upload_files(
         project_id: str = Form(...),
         files: List[UploadFile] = File(...)
 ):
+    settings = get_settings()
+    allowed_type = settings.FILE_ALLOWED_TYPE  # e.g. ".pdf"
+
+    # Validate file types before saving
+    rejected = []
+    for file in files:
+        ext = os.path.splitext(file.filename)[-1].lower()
+        if ext != allowed_type:
+            rejected.append(file.filename)
+
+    if rejected:
+        return JSONResponse(
+            status_code=400,
+            content={
+                "status": ResponseSignal.FILE_TYPE_NOT_SUPPORTED.value,
+                "message": f"Only {allowed_type} files are allowed. Rejected: {', '.join(rejected)}"
+            }
+        )
+
     project_ctrl = ProjectController()
     project_path = project_ctrl.get_project_path(project_id=project_id)
 
@@ -36,7 +57,7 @@ async def upload_files(
     background_tasks.add_task(run_ocr_pipeline, project_path, file_ids, project_id, chroma_store)
 
     return {
-        "status": ResponseSignal.FILE_UPLOAD_SUCCESSFULLY,
+        "status": ResponseSignal.FILE_UPLOAD_SUCCESSFULLY.value,
         "message": f"Uploaded {len(files)} files. Processing started in background.",
         "project_id": project_id
     }
