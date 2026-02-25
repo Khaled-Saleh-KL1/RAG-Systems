@@ -1,5 +1,25 @@
 import os
 import chromadb
+from chromadb import Documents, EmbeddingFunction, Embeddings
+from helpers import get_settings
+
+
+class GeminiGenAIEmbeddingFunction(EmbeddingFunction):
+    """
+    Custom Embedding Function using the modern google.genai package 
+    instead of the deprecated google.generativeai.
+    """
+    def __init__(self, api_key: str, model_name: str = "models/gemini-embedding-001"):
+        from google import genai
+        self.client = genai.Client(api_key=api_key)
+        self.model_name = model_name
+
+    def __call__(self, input: Documents) -> Embeddings:
+        response = self.client.models.embed_content(
+            model=self.model_name,
+            contents=input,
+        )
+        return [e.values for e in response.embeddings]
 
 
 class ChromaDBStore:
@@ -12,10 +32,16 @@ class ChromaDBStore:
             base = os.path.dirname(os.path.abspath(__file__))
             persist_dir = os.path.join(base, "data")
 
+        settings = get_settings()
+        google_ef = GeminiGenAIEmbeddingFunction(api_key=settings.GEMINI_API)
+
         os.makedirs(persist_dir, exist_ok=True)
         self.client = chromadb.PersistentClient(path=persist_dir)
-        self.collection = self.client.get_or_create_collection(name="documents")
-        print(f"[ChromaDB] Connected — persist dir: {persist_dir}")
+        self.collection = self.client.get_or_create_collection(
+            name="documents",
+            embedding_function=google_ef
+        )
+        print(f"[ChromaDB] Connected — persist dir: {persist_dir} (Using Gemini Embeddings)")
 
     def store_document(self, doc_id: str, text: str, metadata: dict = None):
         if self.collection is None:

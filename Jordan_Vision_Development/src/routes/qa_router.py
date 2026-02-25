@@ -19,9 +19,9 @@ STATIC_NO_DATA_MSG = "لا توجد بيانات في قاعدة البيانا�
 STATIC_IRRELEVANT_MSG = "عذراً، هذا السؤال خارج نطاق الوثائق المتاحة في قاعدة البيانات."
 
 # Distance threshold — ChromaDB returns L2 distances, lower = more relevant
-# Adjusted to 1.2 to prevent completely irrelevant questions from triggering the LLM.
-# 1.8 was too high, allowing off-topic questions to pass as "related".
-RELATED_THRESHOLD = 0.7
+# Adjusted to 1.1 to be a bit more permissive on finding context, 
+# relying more on the LLM's classification to determine "UNRELATED" vs "UNAVAILABLE".
+RELATED_THRESHOLD = 1.1
 
 
 class QuestionRequest(BaseModel):
@@ -122,11 +122,16 @@ async def ask_question(request: Request, body: QuestionRequest):
     # Fetch conversation history
     history = chat_history_store.get_history(body.conversation_id, limit=20)
 
-    # Enforce a strict rule for the LLM to use a specific keyword if it doesn't know the answer
+    # Enforce a strict rule for the LLM to use specific keywords based on whether the question is completely unrelated or just missing the exact answer
     strict_prompt = (
         f"{body.question}\n\n"
-        "ملاحظة للنظام: إذا لم تكن الإجابة المحددة على هذا السؤال موجودة في السياق المرفق، "
-        "يجب عليك أن تبدأ إجابتك بكلمة '[غير_متوفر]' ثم تعتذر وتوضح أن المعلومات غير موجودة."
+        "System Note:\n"
+        "You are acting as a strict relevance classifier and an Arabic Assistant.\n"
+        "First, determine if the question is related to the overall topic of the 'Jordan Vision' documents or the provided context.\n"
+        "1. If the question is COMPLETELY UNRELATED to the domain of the provided context (e.g. asking about a glass, random facts, general knowledge), you MUST strictly start your answer with the exact tag '[UNRELATED]' and then politely explain that the question is outside the scope of the provided documents.\n"
+        "2. If the question IS RELATED to the overall topic (e.g. asking about Jordan's population, strategies, vision 2025) BUT the specific answer is missing from the provided context, you MUST strictly start your answer with the exact tag '[UNAVAILABLE]' and then explain that the specific information is not in the documents.\n"
+        "3. If the answer IS in the context, answer normally without any tags.\n"
+        "ALWAYS formulate your final response in the SAME LANGUAGE as the user's question, except for the tags."
     )
 
     # Ask Gemini
@@ -142,9 +147,12 @@ async def ask_question(request: Request, body: QuestionRequest):
     )
 
     # Detect if LLM failed to find a specific answer based on the enforced tag
-    if "[غير_متوفر]" in answer:
+    if "[UNRELATED]" in answer:
+        knows = True # Do not show the injection box
+        clean_answer = answer.replace("[UNRELATED]", "").strip()
+    elif "[UNAVAILABLE]" in answer:
         knows = False # Trigger the injection box (Scenario 2)
-        clean_answer = answer.replace("[غير_متوفر]", "").strip()
+        clean_answer = answer.replace("[UNAVAILABLE]", "").strip()
     else:
         knows = True # Answer found (Scenario 1)
         clean_answer = answer

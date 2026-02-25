@@ -43,16 +43,20 @@ The system uses **Google Gemini** as the LLM for both text cleaning and question
 - **Vector storage** with ChromaDB for semantic search
 - **Context-aware Q&A** — answers are strictly grounded in document content
 
-### 💬 Chat Interface
+### 💬 Chat Interface & GuardRails
 - Modern, dark-themed **React-based** web UI (RTL/Arabic-native layout)
 - **Claude-style slide-out sidebar** with conversation history
 - **Personalized sessions** — each browser gets its own user identity via `localStorage`
 - **Multiple conversations** — create, switch between, and delete conversations
 - **Auto-titled conversations** — named after the first question asked
 - **Conversation memory** — the LLM receives the last 20 messages as context so it remembers what was discussed
+- **AI GuardRails** — the system classifies questions to ensure responses are relevant:
+  - If a question is **unrelated** to the documents, it informs the user without taking further action.
+  - If a question is **related but missing an exact answer**, it prompts the user to teach it.
+  - **Multilingual Support**: The GuardRails are designed to process the internal logic efficiently but will always reply and interact with the user in the **same language** they asked the question in (e.g., asking in English yields an English response).
 
 ### 📝 Teaching System
-- When the LLM can't find an answer, a **teach box** appears
+- When the LLM can't find an answer to a related question, a **teach box** appears
 - Users can provide the correct answer, which gets stored in ChromaDB for future retrieval
 
 ### 📎 File Upload
@@ -259,7 +263,19 @@ All configuration is managed through environment variables loaded via **Pydantic
 
 ## Running the Application
 
-### Start the Server
+### Option A: Using Docker (Recommended)
+
+You can easily run the application using Docker Compose. Make sure your `.env` contains the `GEMINI_API` and `GEMINI_MODEL`.
+
+```bash
+docker-compose --project-directory docker up --build
+```
+
+The app will be available at `http://localhost:8000/app`.
+
+### Option B: Local Setup
+
+Start the Server manually:
 
 ```bash
 cd src
@@ -439,6 +455,9 @@ Upload these through the web interface to start asking questions about Jordan's 
 - **Auto-migration:** On startup, if the old schema is detected it is automatically upgraded
 
 ---
+
+## Repository
+Find the source code and development details here: [Jordan Vision Development Repo](https://github.com/Khaled-Saleh-KL1/RAG-Systems/tree/Jordan/Jordan_Vision_Development).
 
 ## License
 

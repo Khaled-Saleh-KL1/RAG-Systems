@@ -1,1 +1,15 @@
-
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../src/stores/ChromaDB:/app/stores/ChromaDB
+      - ../src/stores/ChatHistory:/app/stores/ChatHistory
+      - ../src/output:/app/output
+    environment:
+      - GEMINI_API=${GEMINI_API}
+      - GEMINI_MODEL=${GEMINI_MODEL}
+    restart: unless-stopped
